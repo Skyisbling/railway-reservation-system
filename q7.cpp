@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 // Area of circle
@@ -13,16 +14,17 @@ float AREA(float l, float b)
     return l * b;
 }
 
-// Area of triangle
-float AREA(float b, float h, int t)
+// Area of triangle using Heron's formula
+float AREA(float a, float b, float c)
 {
-    return 0.5 * b * h;
+    float s = (a + b + c) / 2;
+    return sqrt(s * (s - a) * (s - b) * (s - c));
 }
 
 int main()
 {
     int choice;
-    float r, l, b, h;
+    float r, l, b, a, c;
 
     do
     {
@@ -50,10 +52,14 @@ int main()
                 break;
 
             case 3:
-                cout << "Enter base and height: ";
-                cin >> b >> h;
-                cout << "Area of Triangle: "
-                     << AREA(b, h, 0) << endl;
+                cout << "Enter three sides of triangle: ";
+                cin >> a >> b >> c;
+
+                if (a + b > c && a + c > b && b + c > a)
+                    cout << "Area of Triangle: "
+                         << AREA(a, b, c) << endl;
+                else
+                    cout << "Invalid triangle sides!\n";
                 break;
 
             case 4:
