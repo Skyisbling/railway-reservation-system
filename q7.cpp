@@ -21,22 +21,50 @@ float AREA(float b, float h, int t)
 
 int main()
 {
+    int choice;
     float r, l, b, h;
 
-    cout << "Enter radius of circle: ";
-    cin >> r;
+    do
+    {
+        cout << "\n===== AREA MENU =====\n";
+        cout << "1. Circle\n";
+        cout << "2. Rectangle\n";
+        cout << "3. Triangle\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-    cout << "Area of Circle: " << AREA(r) << endl;
+        switch (choice)
+        {
+            case 1:
+                cout << "Enter radius: ";
+                cin >> r;
+                cout << "Area of Circle: " << AREA(r) << endl;
+                break;
 
-    cout << "\nEnter length and breadth of rectangle: ";
-    cin >> l >> b;
+            case 2:
+                cout << "Enter length and breadth: ";
+                cin >> l >> b;
+                cout << "Area of Rectangle: "
+                     << AREA(l, b) << endl;
+                break;
 
-    cout << "Area of Rectangle: " << AREA(l, b) << endl;
+            case 3:
+                cout << "Enter base and height: ";
+                cin >> b >> h;
+                cout << "Area of Triangle: "
+                     << AREA(b, h, 0) << endl;
+                break;
 
-    cout << "\nEnter base and height of triangle: ";
-    cin >> b >> h;
+            case 4:
+                cout << "Exiting program...\n";
+                break;
 
-    cout << "Area of Triangle: " << AREA(b, h, 0) << endl;
+            default:
+                cout << "Invalid choice!\n";
+        }
+
+    } while (choice != 4);
 
     return 0;
 }
